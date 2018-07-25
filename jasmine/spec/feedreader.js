@@ -65,14 +65,32 @@ $(function() {
 	    var menuClass = theMenu.className;
 		expect(menuClass).toEqual('menu-hidden');
 	});
-    });
 
+	it('changes visibility on click', function(){
+	    var theMenu = document.querySelector('body');
+	    var menuClass = theMenu.className;
+	    var menuIcon = document.getElementsByClassName('menu-icon-link');
+	    if(theMenu.className === 'menu-hidden'){
+		menuIcon[0].click();
+		expect(theMenu.className).not.toBe('menu-hidden');
+	    }
+	    if(theMenu.className === ''){
+		menuIcon[0].click();
+		expect(theMenu.className).toBe('menu-hidden');
+	    }
+/**	    if(theMenu.className === undefined){
+		menuIcon[0].click();
+		expect(menuClass).toBe('menu-hidden');
+	    }
+**/
+	    
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-
+	});
+    });
     /* TODO: Write a new test suite named "Initial Entries" */
 
         /* TODO: Write a test that ensures when the loadFeed
