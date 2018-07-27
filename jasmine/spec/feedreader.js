@@ -1,31 +1,21 @@
-/* feedreader.js
- *
- * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
- */
-
-/* We're placing all of our tests within the $() function,
- * since some of these tests may require DOM elements. We want
- * to ensure they don't run until the DOM is ready.
- */
 $(function() {
     describe('RSS Feeds', function() {
         it('are defined', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            expect(allFeeds).toBeDefined();//there should be a feeds array
+            expect(allFeeds.length).not.toBe(0);//that array should some feeds in it
         });
 
 	it('have a URL and that URL is defined', function(){
 	    for(let feed of allFeeds){
-		expect(feed.url).toBeDefined();
-		expect(feed.url).not.toBe(0);
+		expect(feed.url).toBeDefined();//all feeds should have a url
+		expect(feed.url).not.toBe(0);//that url is defined
 	    }
 	});
 
 	it('have a name and that name is defined', function(){
 	    for(let feed of allFeeds){
-		expect(feed.name).toBeDefined();
-		expect(feed.name).not.toBe(0);
+		expect(feed.name).toBeDefined();//expect all feeds to have a name
+		expect(feed.name).not.toBe(0);//expect the name is not blank
 	    }
 	});
     });
@@ -70,17 +60,16 @@ $(function() {
 
     });
 	
-
     describe('New Feed Selection', function() {
 	let firstFeed;
         beforeEach(function(done){
-	    loadFeed(0);
-	    firstFeed = document.getElementsByClassName('feed')[0].innerHTML;
-	    loadFeed(1,done); //load second feed item
+	    loadFeed(0);//load first first
+	    firstFeed = document.getElementsByClassName('feed')[0].innerHTML;//set first feed html string to a variable 
+	    loadFeed(1,done); //load second feed item and start it block
 	});
 	it('should have different content when a new feed is selected',function(done){
-	    let newFeed = document.getElementsByClassName('feed')[0].innerHTML;
-	    expect(firstFeed).not.toEqual(newFeed);
+	    let newFeed = document.getElementsByClassName('feed')[0].innerHTML;//set second feed html string to a variable
+	    expect(firstFeed).not.toEqual(newFeed);//compare them and expect them to be different
 	    done();
 	});
     });
