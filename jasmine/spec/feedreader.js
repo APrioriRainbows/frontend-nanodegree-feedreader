@@ -8,14 +8,14 @@ $(function() {
 	it('have a URL and that URL is defined', function(){
 	    for(let feed of allFeeds){
 		expect(feed.url).toBeDefined();//all feeds should have a url
-		expect(feed.url).not.toBe(0);//that url is defined
+		expect(feed.url.length).not.toBe(0);//that url is defined
 	    }
 	});
 
 	it('have a name and that name is defined', function(){
 	    for(let feed of allFeeds){
 		expect(feed.name).toBeDefined();//expect all feeds to have a name
-		expect(feed.name).not.toBe(0);//expect the name is not blank
+		expect(feed.name.length).not.toBe(0);//expect the name is not blank
 	    }
 	});
     });
@@ -25,20 +25,20 @@ $(function() {
 	let menuIcon = document.getElementsByClassName('menu-icon-link');//store the menu icon in a variable, so we can click it later
 	let menuClass; //initialize class name at the beginning
 	it('is hidden by default', function(){
-	    menuClass = theMenu.className;//store the menu's class name at the beginning
-	    expect(menuClass).toEqual('menu-hidden');
+	    menuClass = theMenu.classList;//store the menu's class name at the beginning
+	    expect(menuClass.contains('menu-hidden')).toBe(true);
 	});
 
 	it('changes visibility on click', function(){
-	    if(theMenu.className === 'menu-hidden'){
+	    if(theMenu.classList.contains('menu-hidden')){
 		menuIcon[0].click();//click the menu item!
-		menuClass = theMenu.className;//store the menu's class name at the beginning
-		expect(theMenu.className).not.toBe('menu-hidden');//check that the class gets toggled
+		menuClass = theMenu.classList;//store the menu's class names at the beginning
+		expect(menuClass.contains('menu-hidden')).toBe(false);//check that the class gets toggled
 	    }
-	    if(theMenu.className === ''){
+	    if((theMenu.classList.contains('menu-hidden')) === false){
 		menuIcon[0].click();
-		menuClass = theMenu.className;//store the menu's class name at the beginning
-		expect(theMenu.className).toBe('menu-hidden');
+		menuClass = theMenu.classList;//store the menu's class name at the beginning
+		expect(menuClass.contains('menu-hidden')).toBe(true);
 	    }
 	    
 	});
